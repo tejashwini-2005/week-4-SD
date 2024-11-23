@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'b0e2627be270f36dc46cbdd395428825'; // Your API key
+    const apiKey = '3a45b094fb707af0c368d8861c74255f'; // Your API key
     const city = 'Hyderabad'; // Your city name
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateGraph(weatherData.main.temp); // Pass temperature data to update the graph
         } catch (error) {
             console.error('Error fetching weather data:', error.message);
+            alert('Failed to fetch weather data. Check console for details.');
         }
     };
 
@@ -18,19 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateGraph = (temperature) => {
         const ctx = document.getElementById('weatherGraph').getContext('2d');
         new Chart(ctx, {
-            type: 'bar',
+            type: 'bar', // Bar chart for the temperature
             data: {
-                labels: ['Temperature'],
+                labels: ['Temperature'], // Label for the X-axis
                 datasets: [{
-                    label: 'Temperature (°C)',
-                    data: [temperature],
-                    backgroundColor: ['#36A2EB'],
+                    label: 'Temperature (°C)', // Label for the dataset
+                    data: [temperature], // The actual temperature data
+                    backgroundColor: ['#36A2EB'], // Color of the bar
                 }],
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: true, // Set Y-axis to start from zero
                     },
                 },
             },
